@@ -48,11 +48,11 @@ export const Question = () => {
     return (
         <Container className='question-container'>
             { id == 21 ? <img src={freedom} alt="Freedom"/> : null }
-            <p>{ questions[id].question }</p>
+            {/* <p>{ questions[id].question }</p> */}
             <Form.Control size="lg" type="text" id="answer" placeholder="Answer" onChange={validateAnswer} />
             <div>
                 <Button variant="warning" id="hintButton" onClick={() => setHint(!hint)}>Hint</Button><br />
-                <p id="hint">{ questions[id].hint }</p>
+                {/* <p id="hint">{ questions[id].hint }</p> */}
             </div>
             <div>
                 <Link to="/"><Button>Go back</Button></Link>
