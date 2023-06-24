@@ -94,7 +94,12 @@ export const Questions = [
             "Mercury Argus",
             "Mercury/Argus",
             "Mercury & Argus",
-            "Mercury, Argus"
+            "Mercury, Argus",
+            "Argus and Mercury",
+            "Argus Mercury",
+            "Argus/Mercury",
+            "Argus & Mercury",
+            "Argus, Mercury"
         ],
         hint: "c211"
     },
