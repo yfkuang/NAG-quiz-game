@@ -1,5 +1,5 @@
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import {
   BrowserRouter as Router,
   Routes,
@@ -7,21 +7,24 @@ import {
 } from "react-router-dom"
 import Index from './components/pages/landing/'
 import Question from './components/pages/question/'
+import { AnswerProvider } from './context/answerContext'
 
 function App() {
 
   return (
     <div className="App">
-      
-      <Router>
+
+      <AnswerProvider>
+        <Router>
           <Routes>
             {/* Index */}
-            <Route exact path="/" element={<Index/>} />
+            <Route exact path="/" element={<Index />} />
             {/* Question */}
-            <Route path="/:id" element={<Question/>} />
+            <Route path="/:id" element={<Question />} />
           </Routes>
-      </Router>
-      
+        </Router>
+      </AnswerProvider>
+
     </div>
   );
 }

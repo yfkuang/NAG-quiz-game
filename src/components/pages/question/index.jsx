@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import './question.css'
 import PropTypes from 'prop-types'
 import { useParams,
@@ -7,20 +7,30 @@ import { Container, Row, Button } from 'react-bootstrap';
 import { Questions } from '../../../questions';
 import { Form } from 'react-bootstrap';
 import freedom from '../../../assets/freedom.jpg'
+import { useAnswer } from '../../../context/answerContext';
 
-export const Question = (props) => {
+export const Question = () => {
     const { id } = useParams();
-    let hint = false;
+    const [hint, setHint] = useState(false)
+    const { answerState } = useAnswer()
+    const { setAnswerState } = useAnswer()
 
-    const displayHint = () => {
-        hint = !hint
+    useEffect(() => {
+        if(answerState[id][1]) {
+            document.getElementById('answer').style.background = '#DFFFE9'
+            document.getElementById('answer').disabled = true
+            document.getElementById('answer').value = answerState[id][2]
+            document.getElementById('hintButton').disabled = true
+        }
+    }, [])
 
+    useEffect(() => {
         if (hint == false) {
             document.getElementById('hint').style.visibility = 'hidden'
         } else {
             document.getElementById('hint').style.visibility = 'visible'
         }
-    }
+    })
 
     const validateAnswer = (e) => {
         if (!Questions[id].answers.some(answer => e.target.value.toUpperCase()  === answer.toUpperCase() )) {
@@ -29,17 +39,20 @@ export const Question = (props) => {
             e.target.style.background = '#DFFFE9'
             e.target.disabled = true
             document.getElementById('hintButton').disabled = true
+            let newArray = answerState
+            newArray[id][1] = true
+            newArray[id][2] = e.target.value
+            setAnswerState(newArray)
         }
     }
 
     return (
         <Container className='question-container'>
-
             { id == 22 ? <img src={freedom} alt="Freedom"/> : null }
             <p>{ Questions[id].question }</p>
-            <Form.Control size="lg" type="text" placeholder="Answer" onChange={validateAnswer} />
+            <Form.Control size="lg" type="text" id="answer" placeholder="Answer" onChange={validateAnswer} />
             <div>
-                <Button variant="warning" id="hintButton" onClick={displayHint}>Hint</Button><br />
+                <Button variant="warning" id="hintButton" onClick={() => setHint(!hint)}>Hint</Button><br />
                 <p id="hint">{ Questions[id].hint }</p>
             </div>
             <div>
@@ -47,10 +60,6 @@ export const Question = (props) => {
             </div>
         </Container>
     )
-}
-
-Question.propTypes = {
-    index: PropTypes.number
 }
 
 export default Question
