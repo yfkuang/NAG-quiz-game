@@ -9,7 +9,7 @@ const QuestionButton = (props) => {
     const { answerState } = useAnswer()
 
     useEffect(() => {
-        if(answerState.length != 0 && answerState[props.index][1]) {
+        if(answerState.length !== 0 && answerState[props.index][1]) {
             document.querySelector('.question-button[index="' + props.index + '"]').style.background = 'green'
         }
     })

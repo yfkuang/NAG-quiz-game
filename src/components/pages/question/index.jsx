@@ -1,10 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import './question.css'
-import PropTypes from 'prop-types'
 import { useParams,
         Link } from 'react-router-dom';
-import { Container, Row, Button } from 'react-bootstrap';
-import { Questions } from '../../../questions';
+import { Container, Button } from 'react-bootstrap';
 import { Form } from 'react-bootstrap';
 import freedom from '../../../assets/freedom.jpg'
 import { useAnswer } from '../../../context/answerContext';
@@ -14,6 +12,7 @@ export const Question = () => {
     const [hint, setHint] = useState(false)
     const { answerState } = useAnswer()
     const { setAnswerState } = useAnswer()
+    const { questions } = useAnswer()
 
     useEffect(() => {
         if(answerState[id][1]) {
@@ -25,7 +24,7 @@ export const Question = () => {
     }, [])
 
     useEffect(() => {
-        if (hint == false) {
+        if (hint === false) {
             document.getElementById('hint').style.visibility = 'hidden'
         } else {
             document.getElementById('hint').style.visibility = 'visible'
@@ -33,7 +32,7 @@ export const Question = () => {
     })
 
     const validateAnswer = (e) => {
-        if (!Questions[id].answers.some(answer => e.target.value.toUpperCase()  === answer.toUpperCase() )) {
+        if (!questions[id].answers.some(answer => e.target.value.toUpperCase()  === answer.toUpperCase() )) {
             e.target.style.background = '#FFCCCB'
         } else {
             e.target.style.background = '#DFFFE9'
@@ -48,12 +47,12 @@ export const Question = () => {
 
     return (
         <Container className='question-container'>
-            { id == 22 ? <img src={freedom} alt="Freedom"/> : null }
-            <p>{ Questions[id].question }</p>
+            { id == 21 ? <img src={freedom} alt="Freedom"/> : null }
+            <p>{ questions[id].question }</p>
             <Form.Control size="lg" type="text" id="answer" placeholder="Answer" onChange={validateAnswer} />
             <div>
                 <Button variant="warning" id="hintButton" onClick={() => setHint(!hint)}>Hint</Button><br />
-                <p id="hint">{ Questions[id].hint }</p>
+                <p id="hint">{ questions[id].hint }</p>
             </div>
             <div>
                 <Link to="/"><Button>Go back</Button></Link>
