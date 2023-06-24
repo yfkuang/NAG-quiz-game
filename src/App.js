@@ -18,9 +18,9 @@ function App() {
         <Router>
           <Routes>
             {/* Index */}
-            <Route exact path="/NAG-quiz-game/" element={<Index />} />
+            <Route exact path="/" element={<Index />} />
             {/* Question */}
-            <Route path="/NAG-quiz-game/:id" element={<Question />} />
+            <Route path="/:id" element={<Question />} />
           </Routes>
         </Router>
       </AnswerProvider>
