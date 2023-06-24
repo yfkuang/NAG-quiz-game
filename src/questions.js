@@ -1,4 +1,4 @@
-export const Products = [
+export const Questions = [
     {
         question: "My story is set and told in the <b>18th century</b>. I commanded an army for Great-Britain. You will see my contemporaries surround my dying body in Christ-like lamentation. Among them, an indigenous man peers at me, pensive, like &lsquo;The Thinker,&rsquo; as if I am a dying wolf. Who am I?",
         answers: [
