@@ -1,15 +1,16 @@
 //import "./styles.css"
 import { Questions } from '../../../questions'
-import PropTypes from 'prop-types'
-import Button from '../../button/button'
+import { Container,
+         Col } from 'react-bootstrap'
+import QuestionButton from '../../QuestionButton'
 
 const Index = () => {
     return (
-        <div>
-            { Questions.map( question =>
-                <Button question={question.name} answers={question.products} hint={question.products}/>
+        <Container fluid>
+            { Questions.map( (question, index) =>
+                <QuestionButton index={index}/>
             ) }
-        </div>
+        </Container>
     )
 }
 

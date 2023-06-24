@@ -1,4 +1,5 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   BrowserRouter as Router,
   Routes,
@@ -17,7 +18,7 @@ function App() {
             {/* Index */}
             <Route exact path="/" element={<Index/>} />
             {/* Question */}
-            <Route path="/fighter/:id" element={<Question/>} />
+            <Route path="/:id" element={<Question/>} />
           </Routes>
       </Router>
       
