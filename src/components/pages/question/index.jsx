@@ -6,6 +6,7 @@ import { useParams,
 import { Container, Row, Button } from 'react-bootstrap';
 import { Questions } from '../../../questions';
 import { Form } from 'react-bootstrap';
+import freedom from '../../../assets/freedom.jpg'
 
 export const Question = (props) => {
     const { id } = useParams();
@@ -33,6 +34,8 @@ export const Question = (props) => {
 
     return (
         <Container className='question-container'>
+
+            { id == 22 ? <img src={freedom} alt="Freedom"/> : null }
             <p>{ Questions[id].question }</p>
             <Form.Control size="lg" type="text" placeholder="Answer" onChange={validateAnswer} />
             <div>
