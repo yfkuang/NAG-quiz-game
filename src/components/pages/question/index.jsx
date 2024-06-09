@@ -47,7 +47,7 @@ export const Question = () => {
 
     return (
         <Container className='question-container'>
-            { id == 21 ? <img src={freedom} alt="Freedom"/> : null }
+            {/* { id == 21 ? <img src={freedom} alt="Freedom"/> : null } */}
             <p>{ questions[id].question }</p>
             <Form.Control size="lg" type="text" id="answer" placeholder="Answer" onChange={validateAnswer} />
             <div>
