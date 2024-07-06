@@ -13,6 +13,7 @@ export const Question = () => {
     const { answerState } = useAnswer()
     const { setAnswerState } = useAnswer()
     const { questions } = useAnswer()
+    const [section, setSection] = useState("")
 
     useEffect(() => {
         if(answerState[id][1]) {
@@ -20,6 +21,18 @@ export const Question = () => {
             document.getElementById('answer').disabled = true
             document.getElementById('answer').value = answerState[id][2]
             document.getElementById('hintButton').disabled = true
+        }
+        console.log(questions)
+        switch (questions[id].section) {
+            case 1:
+                setSection("European and American")
+                break;
+            case 2:
+                setSection("Indigenous and Canadian")
+                break;
+            case 3:
+                setSection("Contemporary")
+                break;
         }
     }, [])
 
@@ -48,6 +61,7 @@ export const Question = () => {
     return (
         <Container className='question-container'>
             {/* { id == 21 ? <img src={freedom} alt="Freedom"/> : null } */}
+            <h3>{ section }</h3>
             <p>{ questions[id].question }</p>
             <Form.Control size="lg" type="text" id="answer" placeholder="Answer" onChange={validateAnswer} />
             <div>
