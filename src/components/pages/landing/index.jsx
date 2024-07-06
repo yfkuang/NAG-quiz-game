@@ -9,7 +9,7 @@ const Index = () => {
     const { init } = useAnswer()
 
     useEffect(() => {
-        if (answerState.length < 20) {
+        if (answerState.length < 19) {
             init()
         }
     },[])
