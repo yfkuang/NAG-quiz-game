@@ -22,7 +22,6 @@ export const Question = () => {
             document.getElementById('answer').value = answerState[id][2]
             document.getElementById('hintButton').disabled = true
         }
-        console.log(questions)
         switch (questions[id].section) {
             case 1:
                 setSection("European and American")
